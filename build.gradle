@@ -1,0 +1,39 @@
+plugins
+{
+    id 'java'
+    id 'maven-publish'
+}
+
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/meatsuko/FXController")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+
+group 'meatsuko.javafx'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories
+{
+    mavenCentral()
+}
+
+dependencies
+{
+}
